@@ -1,0 +1,8 @@
+from debian:bullseye
+
+RUN apt-get update && apt-get install -y mariadb-server \
+    && service mariadb start 
+
+run 
+
+CMD [ "bash" ]
