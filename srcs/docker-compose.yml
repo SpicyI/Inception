@@ -31,3 +31,4 @@ services:
       - MYSQL_DATABASE=wordpress
     volumes:
       - /home/spicyi/data/mariadb:/var/lib/mysql
+
