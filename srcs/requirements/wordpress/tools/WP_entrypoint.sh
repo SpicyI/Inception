@@ -2,6 +2,8 @@
 
 # copy the template config file
 sleep 10
+
+wp --allow-root core download --path=/var/www/wordpress
 cd /var/www/wordpress
 cp wp-config-sample.php wp-config.php
 
