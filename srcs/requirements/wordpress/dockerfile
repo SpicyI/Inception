@@ -1,3 +1,5 @@
+# This Dockerfile installs and configures WordPress with PHP-FPM and WP-CLI.
+# It exposes port 9000 and uses an entrypoint script to start the WordPress installation.
 FROM debian:bullseye
 
 # installing php-fpm

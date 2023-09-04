@@ -1,0 +1,22 @@
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/run/mysqld/mysqld.sock
+log-error=/var/log/mysql/error.log
+user=mysql
+
+# Set the character set and collation
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci
+
+# Set the bind address to allow remote connections (if needed)
+bind-address=0.0.0.0
+
+# Set the port for MySQL connections
+port=3306
+
+
+
+
+
+
+
