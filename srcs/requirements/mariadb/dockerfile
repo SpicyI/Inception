@@ -8,9 +8,10 @@ RUN apt-get update && apt-get install -y mariadb-server
 COPY ./tools/config.sh .
 
 COPY ./conf/mariadb.cnf /etc/mysql/my.cnf
+
 RUN chmod +x config.sh
 
-RUN   chown -R mysql:mysql /var/lib/mysql
+# RUN   chown -R mysql:mysql /var/lib/mysql
 
 EXPOSE 3306
 

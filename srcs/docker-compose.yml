@@ -15,7 +15,7 @@ services:
       context: ./requirements/wordpress
     environment:
       - WORDPRESS_DB_HOST=mariadb
-      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_USER=GAME_MASTER
       - WORDPRESS_DB_PASSWORD=TETRIS@MDB
       - WORDPRESS_DB_NAME=wordpress
     volumes:
@@ -27,8 +27,17 @@ services:
     build:
       context: ./requirements/mariadb
     environment:
-      - MYSQL_ROOT_PASSWORD=TETRIS@MDB
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=GAME_MASTER
+      - MYSQL_PASSWORD=TETRIS@MDB
       - MYSQL_DATABASE=wordpress
     volumes:
-      - /home/spicyi/data/mariadb:/var/lib/mysql
+      - mariadb:/var/lib/mysql
 
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/spicyi/data/mariadb
+      o: bind
