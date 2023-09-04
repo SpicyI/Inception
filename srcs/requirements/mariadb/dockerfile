@@ -1,8 +1,11 @@
 from debian:bullseye
 
-RUN apt-get update && apt-get install -y mariadb-server \
-    && service mariadb start 
+RUN apt-get update && apt-get install -y mariadb-server
 
-run 
+COPY ./tools/config.sh .
 
-CMD [ "bash" ]
+RUN chmod +x config.sh
+
+EXPOSE 3306
+
+ENTRYPOINT [ "./config.sh" ]

@@ -1,0 +1,23 @@
+FROM debian:bullseye
+
+# installing php-fpm
+ENV DEBIAN_FRONTEND=noninteractive
+
+EXPOSE 9000
+
+RUN apt-get -y update && apt-get install -y software-properties-common && apt-get -y install curl  &&\
+    apt-get install -y php7.4-fpm php7.4-mysql php7.4-curl php7.4-gd php7.4-intl php7.4-mbstring php7.4-soap php7.4-xml php7.4-xmlrpc php7.4-zip 
+
+# installing WP-cli
+
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+    chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
+
+# installing WP
+RUN wp --allow-root core download --path=/var/www/wordpress
+
+COPY ./tools/WP_entrypoint.sh .
+
+RUN chmod +x WP_entrypoint.sh
+
+ENTRYPOINT [ "/WP_entrypoint.sh" ]

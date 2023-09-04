@@ -1,0 +1,32 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./srcs/requirements/nginx
+    ports:
+      - "443:443"
+    volumes:
+      - /home/del-khay/data/wordpress:/var/www/wordpress
+    depends_on:
+      - wordpress
+
+  wordpress:
+    build:
+      context: ./srcs/requirements/wordpress
+    environment:
+      - WORDPRESS_DB_HOST=mariadb
+      - WORDPRESS_DB_USER=root
+      - WORDPRESS_DB_PASSWORD=TETRIS@MDB
+      - WORDPRESS_DB_NAME=wordpress
+    volumes:
+      - /home/del-khay/data/wordpress:/var/www/wordpress
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=TETRIS@MDB
+      - MYSQL_DATABASE=wordpress
+    volumes:
+      - /home/del-khay/data/mariadb:/var/lib/mysql
