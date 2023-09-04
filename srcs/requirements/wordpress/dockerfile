@@ -14,7 +14,11 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
     chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 # installing WP
-RUN wp --allow-root core download --path=/var/www/wordpress
+
+RUN mkdir -p /var/www/wordpress && \
+    mkdir -p /run/php
+
+RUN chown -R 755 /var/www/wordpress
 
 COPY ./tools/WP_entrypoint.sh .
 
