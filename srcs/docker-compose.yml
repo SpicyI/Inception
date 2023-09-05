@@ -1,6 +1,7 @@
 version: '3'
 services:
   nginx:
+    container_name: nginx
     build:
       context: ./requirements/nginx
     ports:
@@ -11,26 +12,22 @@ services:
       - wordpress
 
   wordpress:
+    container_name: wordpress
     build:
       context: ./requirements/wordpress
-    environment:
-      - WORDPRESS_DB_HOST=mariadb
-      - WORDPRESS_DB_USER=GAME_MASTER
-      - WORDPRESS_DB_PASSWORD=TETRIS@MDB
-      - WORDPRESS_DB_NAME=wordpress
+    env_file:
+      - .env
     volumes:
       - /home/spicyi/data/wordpress:/var/www/wordpress
     depends_on:
       - mariadb
 
   mariadb:
+    container_name: mariadb
     build:
       context: ./requirements/mariadb
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - MYSQL_USER=GAME_MASTER
-      - MYSQL_PASSWORD=TETRIS@MDB
-      - MYSQL_DATABASE=wordpress
+    env_file:
+      - .env
     volumes:
       - mariadb:/var/lib/mysql
 
