@@ -7,7 +7,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - /home/spicyi/data/wordpress:/var/www/wordpress
+      - wordpress:/var/www/wordpress
     depends_on:
       - wordpress
 
@@ -18,7 +18,7 @@ services:
     env_file:
       - .env
     volumes:
-      - /home/spicyi/data/wordpress:/var/www/wordpress
+      - wordpress:/var/www/wordpress
     depends_on:
       - mariadb
 
@@ -37,4 +37,10 @@ volumes:
     driver_opts:
       type: none
       device: /home/spicyi/data/mariadb
+      o: bind
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/spicyi/data/wordpress
       o: bind

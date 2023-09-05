@@ -1,3 +1,8 @@
+# This Dockerfile installs and configures MariaDB server on a Debian Bullseye image.
+# It copies the config.sh script and mariadb.cnf configuration file to the container.
+# The script is made executable and set as the entrypoint.
+# Port 3306 is exposed for external access.
+
 FROM debian:bullseye
 
 ENV MYSQL_ROOT_PASSWORD=TETRIS@MDB \
@@ -11,7 +16,7 @@ COPY ./conf/mariadb.cnf /etc/mysql/my.cnf
 
 RUN chmod +x config.sh
 
-# RUN   chown -R mysql:mysql /var/lib/mysql
+
 
 EXPOSE 3306
 

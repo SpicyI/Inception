@@ -9,16 +9,17 @@ cd /var/www/wordpress
 
 # # manually replacing each field with the right credential
 
-# sed -i "s/username_here/$WORDPRESS_DB_USER/g" wp-config.php
-# sed -i "s/password_here/$WORDPRESS_DB_PASSWORD/g" wp-config.php
-# sed -i "s/localhost/$WORDPRESS_DB_HOST/g" wp-config.php
-# sed -i "s/database_name_here/$WORDPRESS_DB_NAME/g" wp-config.php
+cp wp-config-sample.php wp-config.php
+sed -i "s/username_here/$WORDPRESS_DB_USER/g" wp-config.php
+sed -i "s/password_here/$WORDPRESS_DB_PASSWORD/g" wp-config.php
+sed -i "s/localhost/$WORDPRESS_DB_HOST/g" wp-config.php
+sed -i "s/database_name_here/$WORDPRESS_DB_NAME/g" wp-config.php
 
-wp --allow-root config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --dbprefix=wp_
-# mv wp-config-sample.php wp-config.php
+# wp --allow-root config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --dbprefix=wp_
 
-wp --allow-root core install --url="del-kahy.42.fr" --title="landing page" --admin_user=delkhayADM --admin_password="Ekhayyate@wp" --admin_email="del-khay@student.1337.ma"
+wp --allow-root core install --url="del-khay.42.fr" --title="landing page" --admin_user=delkhayADM --admin_password="Ekhayyate@wp" --admin_email="del-khay@student.1337.ma"
 
+wp --allow-root user create delkhayADM2 delkhay@student.com  --role=author--user_pass=Ekhayyate@wp2
 
 # ! add user (default)
 sed -i 's#listen = /run/php/php7.4-fpm.sock#listen = 0.0.0.0:9000#g' /etc/php/7.4/fpm/pool.d/www.conf
