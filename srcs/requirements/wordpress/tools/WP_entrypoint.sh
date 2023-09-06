@@ -23,6 +23,9 @@ sed -i "s/username_here/$WORDPRESS_DB_USER/g" wp-config.php
 sed -i "s/password_here/$WORDPRESS_DB_PASSWORD/g" wp-config.php
 sed -i "s/localhost/$WORDPRESS_DB_HOST/g" wp-config.php
 sed -i "s/database_name_here/$WORDPRESS_DB_NAME/g" wp-config.php
+sed -i "s/WP_CACHE_KEY_SALT/$WORDPRESS_CASHE_SALT/g" wp-config.php
+sed -i "s/WP_REDIS_HOST/redis/g" wp-config.php
+sed -i "s/WP_CACHE/true/g" wp-config.php
 
 # wp --allow-root config create --dbname=$WORDPRESS_DB_NAME --dbuser=$WORDPRESS_DB_USER --dbpass=$WORDPRESS_DB_PASSWORD --dbhost=$WORDPRESS_DB_HOST --dbprefix=wp_
 
