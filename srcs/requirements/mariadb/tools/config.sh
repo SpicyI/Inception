@@ -1,12 +1,19 @@
 #!/bin/bash
 
+# start MariaDB service
 service mariadb start
 
 echo  "=> Waiting for confirmation of MariaDB service startup"
 
-sleep 1
+# loop until mysql is ready
+until mysqladmin ping -h $WORDPRESS_DB_HOST --silent; do
+    echo 'waiting for mysqld to be connectable...'
+    sleep 1
+done
 
 
+#  create database
+echo "=> Creating database $MYSQL_DATABASE"
 
 mysql -sfu root <<EOS
 ALTER USER 'root'@'localhost' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD'; 
@@ -20,12 +27,10 @@ GRANT ALL PRIVILEGES ON $MYSQL_DATABASE.* TO '$MYSQL_USER'@'%';
 FLUSH PRIVILEGES;
 EOS
 
-
 echo "=> Done!"
-mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
+
 echo "=> restarting MariaDB ..."
-# echo "=> Stopping MariaDB ..."
+mysqladmin -u root -p$MYSQL_ROOT_PASSWORD shutdown
 mysqld 
 
 echo "=> fail!"
-# echo "=> MariaDB is ready to use."
