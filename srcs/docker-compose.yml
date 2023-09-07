@@ -12,6 +12,7 @@ services:
     depends_on:
       - wordpress
       - adminer
+      - redis
     restart: always
     networks:
       - inception
@@ -61,9 +62,6 @@ services:
       context: ./requirements/bonus/redis
     volumes:
       - wordpress:/var/www/wordpress
-    depends_on:
-      - mariadb
-      - wordpress
     restart: always
     networks:
       - inception

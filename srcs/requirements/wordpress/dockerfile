@@ -27,6 +27,8 @@ RUN chown -R 755 /var/www/wordpress
 
 COPY ./tools/WP_entrypoint.sh .
 
+# COPY ./conf/wp-config.php .
+
 RUN chmod +x WP_entrypoint.sh
 
 ENTRYPOINT [ "/WP_entrypoint.sh" ]

@@ -8,13 +8,13 @@ FROM debian:bullseye
 RUN apt-get update && apt-get install -y redis-server php-redis && \
     apt-get install -y wget
 
-RUN mkdir -p /var/www/wordpress && \
-    chown -R 755 /var/www/wordpress
+EXPOSE 6379
+
+RUN mkdir -p /var/www/wordpress 
 
 COPY ./tools/redis_entrypoint.sh .
 
 RUN chmod +x redis_entrypoint.sh
 
-EXPOSE 6379
 
 ENTRYPOINT [ "/redis_entrypoint.sh" ]

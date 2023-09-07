@@ -20,9 +20,12 @@ update_config "bind" "$BIND_ADDRESS"
 update_config "maxmemory" "$MAXMEMORY"
 update_config "maxmemory-policy" "$MAXMEMORY_POLICY"
 
-wget https://assets.digitalocean.com/articles/wordpress_redis/object-cache.php
+# echo madvise > /sys/kernel/mm/transparent_hugepage/enabled
+# echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
+
+# wget https://assets.digitalocean.com/articles/wordpress_redis/object-cache.php
 
 
-mv object-cache.php /var/www/wordpress/wp-content/
+# mv object-cache.php /var/www/wordpress/wp-content/
 
-redis-server --appendonly no
+redis-server --daemonize no --protected-mode no
