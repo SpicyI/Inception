@@ -1,0 +1,27 @@
+# vsftpd container for wordpress
+
+
+FROM debian:bullseye
+
+ARG FTPS_USER
+ARG FTPS_PASSWORD
+
+EXPOSE 21
+
+ENV FTPS_USER=tuna FTPS_PASSWORD=lobster@ftp
+
+RUN apt-get update && apt-get install -y vsftpd
+
+COPY ./tools/ftp_entrypoint.sh ftp_entrypoint.sh
+
+COPY ./conf/vsftpd.conf /vsftpd.conf
+
+
+RUN chmod +x ftp_entrypoint.sh
+
+RUN useradd -m $FTPS_USER -s /bin/bash; echo -n "$FTPS_USER:$FTPS_PASSWORD" | chpasswd && \
+    echo "$FTPS_USER" | tee -a /etc/vsftpd.userlist
+
+RUN mkdir -p /home/$FTPS_USER/ftp_directory
+
+ENTRYPOINT ["./ftp_entrypoint.sh"]

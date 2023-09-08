@@ -66,6 +66,18 @@ services:
     networks:
       - inception
 
+  ftp:
+    container_name: ftp
+    build:
+      context: ./requirements/bonus/ftp
+    volumes:
+      - wordpress:/home/tuna/ftp_directory/ftp_data
+    ports:
+      - "21:21"
+    depends_on:
+      - wordpress
+    restart: always
+
 volumes:
   mariadb:
     driver: local
