@@ -1,0 +1,46 @@
+baseURL: "http://spicyi.me/"
+languageCode: en-us
+title: Spicy's Portfolio
+theme: paperMod
+# publishDir: docs
+enableEmoji: true
+params:
+  defaultTheme: auto
+  social:
+    twitter: WinstonLowel
+    github: SpicyI
+    custom: del-khay
+  label:
+    text: 'My Portfolio'
+    iconHeight: 35
+  profileMode:
+    enabled: false
+  homeInfoParams:
+    Title: "Spicy's"
+    description: 'Portfolio'
+    image: 'https://cdn.intra.42.fr/users/c361f5c6fc11936c44d2cabbd17e2b61/del-khay.jpg'
+    Content:  >
+      Greetings, I am Spicy, a cyberpunk enthusiast and aspiring programmer.
+      Currently immersed in the realms of C and C++ 👾, I am captivated by the allure of low-level programming, reverse engineering, and game development.
+      With a deep passion for the cyberpunk genre, I find solace and excitement in virtual worlds while wielding a controller as my weapon of choice 🕹.
+      Let's embark on a journey through neon-lit cityscapes and unravel the mysteries of the digital realm together 🌌.
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys:
+      - title
+      - permalink
+      - summary
+      - content
+  socialIcons:
+    - name: twitter
+      url: 'https://twitter.com/WinstonLowel'
+    - name: github
+      url: 'https://github.com/SpicyI'
+    - name: custom
+      url: 'https://profile.intra.42.fr/users/del-khay'
+      icon: '/42.png'

@@ -1,0 +1,31 @@
+FROM debian:bullseye
+
+EXPOSE 1313
+
+RUN apt-get update && apt-get install -y \
+    wget \
+    git 
+
+RUN wget https://github.com/gohugoio/hugo/releases/download/v0.118.2/hugo_extended_0.118.2_Linux-64bit.tar.gz
+RUN tar -zxvf hugo_extended_0.118.2_Linux-64bit.tar.gz && rm -f hugo_extended_0.118.2_Linux-64bit.tar.gz
+RUN mv hugo /usr/local/bin/hugo
+
+
+RUN hugo new site my-portfolio
+
+WORKDIR /my-portfolio
+
+RUN mkdir -p themes/paperMod/ \
+    && mkdir -p content/projects
+
+RUN git clone https://github.com/adityatelange/hugo-PaperMod themes/paperMod --depth=1
+
+WORKDIR /my-portfolio/themes/paperMod
+RUN git pull
+WORKDIR /my-portfolio
+
+COPY ./conf/config.yaml /my-portfolio/config.yaml 
+COPY markdowns/* ./content/projects/
+RUN rm -f hugo.toml
+
+CMD ["hugo", "server", "--bind", "spicyi.me", "--port", "1313", "--appendPort=false"]
