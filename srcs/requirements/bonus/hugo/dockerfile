@@ -28,4 +28,4 @@ COPY ./conf/config.yaml /my-portfolio/config.yaml
 COPY markdowns/* ./content/projects/
 RUN rm -f hugo.toml
 
-CMD ["hugo", "server", "--bind", "spicyi.me", "--port", "1313", "--appendPort=false"]
+CMD ["hugo", "server", "--baseURL", "http://spicy.me:1313" ,"--bind", "0.0.0.0", "--port", "1313", "--appendPort=false"]

@@ -78,6 +78,15 @@ services:
       - wordpress
     restart: always
 
+  hugo:
+    container_name: hugo
+    build:
+      context: ./requirements/bonus/hugo
+    ports:
+      - "1313:1313"
+    restart: always
+
+
 volumes:
   mariadb:
     driver: local

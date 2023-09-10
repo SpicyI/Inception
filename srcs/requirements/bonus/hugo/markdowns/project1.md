@@ -3,7 +3,7 @@ title: "Minishell"
 date: 2023-09-09T16:21:26Z
 draft: false
 cover:
-  image: "https://cdn.ttgtmedia.com/rms/onlineimages/REF_bash_command_line_3_mobile.jpg"
+  image: "https://imgs.search.brave.com/1ftr9jeGNxGTOjlaESBEbeP-LwlEuG9V1KRVZ5pq4pU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/Z2l0a3Jha2VuLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/Mi8wMi9DTEktc3Rh/bmRzLWZvckhlcm8u/cG5n"
   alt: "shell picture"
 ShowToc: true
 ShowPostNavLinks: true
