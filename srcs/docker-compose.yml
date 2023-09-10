@@ -102,14 +102,14 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/spicyi/data/mariadb
+      device: /home/del-khay/data/mariadb
       o: bind
 
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: /home/spicyi/data/wordpress
+      device: /home/del-khay/data/wordpress
       o: bind
 
 
