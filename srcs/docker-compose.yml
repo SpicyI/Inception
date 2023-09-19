@@ -93,7 +93,7 @@ services:
     env_file:
       - .env
     ports:
-      - "1313:1313"
+      - "127.0.1.25:80:80"
     restart: always
   
   portainer:
