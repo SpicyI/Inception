@@ -3,7 +3,6 @@
 FROM debian:bullseye
 
 # installing php-fpm
-ENV DEBIAN_FRONTEND=noninteractive
 
 EXPOSE 9000
 

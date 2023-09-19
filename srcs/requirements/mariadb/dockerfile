@@ -5,9 +5,6 @@
 
 FROM debian:bullseye
 
-ENV MYSQL_ROOT_PASSWORD=TETRIS@MDB \
-      MYSQL_DATABASE=wordpress
-
 RUN apt-get update && apt-get install -y mariadb-server
 
 COPY ./tools/config.sh .

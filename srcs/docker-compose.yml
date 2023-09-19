@@ -5,6 +5,8 @@ services:
     container_name: nginx
     build:
       context: ./requirements/nginx
+    env_file:
+      - .env
     ports:
       - "443:443"
     volumes:
@@ -47,6 +49,8 @@ services:
     container_name: adminer
     build:
       context: ./requirements/bonus/adminer
+    env_file:
+      - .env
     volumes:
       - wordpress:/var/www/wordpress
     depends_on:
@@ -60,6 +64,8 @@ services:
     container_name: redis
     build:
       context: ./requirements/bonus/redis
+    env_file:
+      - .env
     volumes:
       - wordpress:/var/www/wordpress
     restart: always
@@ -70,6 +76,8 @@ services:
     container_name: ftp
     build:
       context: ./requirements/bonus/ftp
+    env_file:
+      - .env
     volumes:
       - wordpress:/home/tuna/ftp_directory/ftp_data
     ports:
@@ -82,6 +90,8 @@ services:
     container_name: hugo
     build:
       context: ./requirements/bonus/hugo
+    env_file:
+      - .env
     ports:
       - "1313:1313"
     restart: always
@@ -90,6 +100,8 @@ services:
     container_name: portainer
     build:
       context: ./requirements/bonus/portainer
+    env_file:
+      - .env
     ports:
       - "9000:9000"
     volumes:
