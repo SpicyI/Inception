@@ -8,7 +8,7 @@ services:
     env_file:
       - .env
     ports:
-      - "443:443"
+      - "127.0.0.1:443:443"
     volumes:
       - wordpress:/var/www/wordpress
     depends_on:
@@ -85,6 +85,8 @@ services:
     depends_on:
       - wordpress
     restart: always
+    networks:
+      - inception
 
   hugo:
     container_name: hugo
@@ -95,6 +97,8 @@ services:
     ports:
       - "127.0.1.25:80:80"
     restart: always
+    networks:
+      - inception
   
   portainer:
     container_name: portainer
@@ -103,10 +107,12 @@ services:
     env_file:
       - .env
     ports:
-      - "9000:9000"
+      - "127.0.1.26:80:9000"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
+    networks:
+      - inception
 
 
 volumes:
