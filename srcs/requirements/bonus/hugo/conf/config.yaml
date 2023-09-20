@@ -20,6 +20,8 @@ params:
     description: 'Portfolio'
     image: 'https://cdn.intra.42.fr/users/c361f5c6fc11936c44d2cabbd17e2b61/del-khay.jpg'
     Content:  >
+      {{< figure src="https://cdn.intra.42.fr/users/c361f5c6fc11936c44d2cabbd17e2b61/del-khay.jpg" class="rounded" >}}
+
       Greetings, I am Spicy, a cyberpunk enthusiast and aspiring programmer.
       Currently immersed in the realms of C and C++ 👾, I am captivated by the allure of low-level programming, reverse engineering, and game development.
       With a deep passion for the cyberpunk genre, I find solace and excitement in virtual worlds while wielding a controller as my weapon of choice 🕹.
